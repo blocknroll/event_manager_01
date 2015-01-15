@@ -1,1 +1,5 @@
+http://tutorials.jumpstartlab.com/projects/eventmanager.html
+http://tutorials.jumpstartlab.com/academy/workshops/testing_event_manager.html
+
+
 "Look for a Solution before Building a Solution"
