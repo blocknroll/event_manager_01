@@ -8,18 +8,17 @@ def clean_zipcode(zipcode)
   # if the zip code is more than 5 digits, truncate it to the first 5 digits
   # if the zip code is less than 5 digits, add zeros to the front until it becomes 5 digits
   zipcode.to_s.rjust(5, "0")[0..4]
+
+  # if zipcode.nil?
+  #   zipcode = "00000"
+  # elsif zipcode.length < 5
+  #   zipcode = zipcode.rjust 5, "0"
+  # elsif zipcode.length > 5
+  #   zipcode = zipcode[0..4]
+  # else
+  #   zipcode
+  # end
 end
-
-def legislators_by_zipcode(zipcode)
-  legislators = Sunlight::Congress::Legislator.by_zipcode("80203")
-
-  legislator_names = legislators.collect do |legislator|
-    "#{legislator.first_name} #{legislator.last_name}"
-  end
-
-  legislator_names.join(", ")
-end
-
 
 puts "EventManager Initialized!"
 
@@ -30,7 +29,13 @@ contents.each do  |row|
 
   zipcode = clean_zipcode(row[:zipcode])
 
-  legislators = legislators_by_zipcode(80203)
+  legislators = Sunlight::Congress::Legislator.by_zipcode("80203")
 
-  puts "#{name} #{zipcode} #{legislators}"
+  legislator_names = legislators.collect do |legislator|
+    "#{legislator.first_name} #{legislator.last_name}"
+  end
+
+  legislators_string = legislator_names.join(", ")
+
+  puts "#{name} #{zipcode} #{legislators_string}"
 end
