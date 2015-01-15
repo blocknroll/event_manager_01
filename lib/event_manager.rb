@@ -1,5 +1,7 @@
-require "csv"
+require 'csv'
+require 'sunlight/congress'
 
+Sunlight::Congress.api_key = "bc756064919e4b8bb0025802325438cf"
 
 def clean_zipcode(zipcode)
   # if the zip code is exactly 5 digits, assume that it is ok
@@ -27,5 +29,11 @@ contents.each do  |row|
 
   zipcode = clean_zipcode(row[:zipcode])
 
-  puts "#{name} #{zipcode}"
+  legislators = Sunlight::Congress::Legislator.by_zipcode("80203")
+
+  legislator_names = legislators.collect do |legislator|
+    "#{legislator.first_name} #{legislator.last_name}"
+  end
+
+  puts "#{name} #{zipcode} #{legislator_names}"
 end
