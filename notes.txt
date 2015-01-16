@@ -3,3 +3,29 @@ http://tutorials.jumpstartlab.com/academy/workshops/testing_event_manager.html
 
 
 "Look for a Solution before Building a Solution"
+
+%{ String Contents }
+  is one choice when defining a string that spans multiple lines.
+
+
+
+
+//////////////////////////////////////////////////
+TYPO FIXES:
+
+  Ruby’s ERB section:
+  remove 'an'
+  Defining an ERB template is extremely similar
+  to our existing template. The difference is
+  that we use 'an' escape sequence tags which allow
+  us to insert any variables, methods or ruby
+  code we want to execute.
+
+  Binding
+  'A' to 'An'
+  The method binding returns a special object.
+  This object is an instance of Binding.
+  'A' instance of binding knows all about
+  the current state of variables and methods
+  within the given scope. In this case, binding
+  here knows about the variable meaning_of_life.
