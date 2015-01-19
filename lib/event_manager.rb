@@ -56,7 +56,6 @@ contents.each do  |row|
   # phone.chars
   # remove extra chars '.' '-'
 
-
   if phone.length < 10
     # assume bad
     puts 'bad phone. < 10'
