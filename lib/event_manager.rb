@@ -11,6 +11,11 @@ def clean_zipcode(zipcode)
   zipcode.to_s.rjust(5, "0")[0..4]
 end
 
+def clean_phone_number(phone_number)
+
+  # phone_number.to_s
+end
+
 def legislators_by_zipcode(zipcode)
   Sunlight::Congress::Legislator.by_zipcode("80203")
 end
@@ -40,7 +45,49 @@ contents.each do  |row|
   zipcode = clean_zipcode(row[:zipcode])
   legislators = legislators_by_zipcode(80203)
 
+  phone = row[:homephone]
+
+  # If the phone number is less than 10 digits assume that it is a bad number
+  # If the phone number is 10 digits assume that it is good
+  # If the phone number is 11 digits and the first number is 1, trim the 1 and use the first 10 digits
+  # If the phone number is 11 digits and the first number is not 1, then it is a bad number
+  # If the phone number is more than 11 digits assume that it is a bad number
+
+  # phone.chars
+  # remove extra chars '.' '-'
+
+
+  if phone.length < 10
+    # assume bad
+    puts 'bad phone. < 10'
+    puts phone
+
+    elsif phone.length == 11 && phone[0] == 1
+      phone = phone[1..10]
+      puts phone
+
+    elsif phone.length == 11 && phone[0] != 1
+      # assume bad
+      puts 'bad phone. 11 & 1'
+      puts phone
+
+    elsif phone.length > 11
+      # assume bad
+      puts 'bad phone. > 11'
+      puts phone
+
+    else
+      # assume good
+      puts phone
+
+  end
+
+  # puts phone
+
+
+
+
   form_letter = erb_template.result(binding)
 
-  save_thank_you_letters(id,form_letter)
+  # save_thank_you_letters(id,form_letter)
 end
