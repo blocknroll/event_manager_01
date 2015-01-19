@@ -83,5 +83,5 @@ contents.each do  |row|
 
   form_letter = erb_template.result(binding)
 
-  save_thank_you_letters(id,form_letter)
+  # save_thank_you_letters(id,form_letter)
 end
