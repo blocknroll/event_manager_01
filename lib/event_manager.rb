@@ -12,8 +12,6 @@ def clean_zipcode(zipcode)
 end
 
 def clean_phone_number(phone_number)
-
-  # phone_number.to_s
 end
 
 def legislators_by_zipcode(zipcode)
@@ -81,12 +79,9 @@ contents.each do  |row|
 
   end
 
-  # puts phone
-
-
 
 
   form_letter = erb_template.result(binding)
 
-  # save_thank_you_letters(id,form_letter)
+  save_thank_you_letters(id,form_letter)
 end
